@@ -1,64 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
+   <title>Asme-Calculator</title>
 
-      body {
-        font-size: 14px;
-      }
-
-      .all-container {
-        padding: 40px 0;
-        border-radius: 5px;
-        width: 300px;
-        /* background-color: gray; */
-        text-align: center;
-        margin: 0 auto;
-      }
-
-      .input-place {
-        font-weight: bold;
-        font-size: 14px;
-        border-radius: 10px;
-        height: 80px;
-        width: 232px;
-        margin-left: px;
-        margin-bottom: 7px;
-        text-align: right;
-      }
-
-      .btn-container {
-        margin: 0 auto;
-       
-      }
-
-      .btn {
-        border: none;
-        border-radius: 5px;
-        width: 50px;
-        height: 50px;
-        margin: 5px;
-
-        transition: opacity 0.15s;
-      }
-
-      .btn:hover {
-        opacity: 0.5;
-      }
-
-      .big-btn {
-        width: 112px;
-      }
-
-      .red {
-        background-color: red;
-      }
-
-      .orange {
-        background-color: orange;
-      }
-
-    </style>
+   <link rel="stylesheet" href="cal.css">
 
   </head>
   <body>
@@ -99,78 +44,7 @@
     </div>
     
 
-    <script>
-
-      const result = document.querySelector('.input-place');
-      
-      
-      let specialChar; 
-
-      const specials = document.querySelectorAll('.orange');
-      specials.forEach((character, index) => {
-        character.addEventListener('click', () => {
-          specialChar = character.innerText;
-          //console.log(specialChar);
-        });
-      });
-
-
-
-
-
-      const btn = document.querySelectorAll('.btn');
-      btn.forEach((singleButton, index) => {
-        singleButton.addEventListener('click', () => {
-          if (singleButton.innerText === 'c') {
-            clearResult(singleButton.innerText);
-          } else if (singleButton.innerText === '=') {
-            getResult(singleButton.innerText);
-          } else if (singleButton.innerText === '%') {
-            getPercent(singleButton.innerText);
-            //getResult(singleButton.innerText);
-          } else if (singleButton.innerText === specialChar) {
-            checkValidation();
-          }  else {
-            getResult(singleButton.innerText);
-          }
-          console.log(singleButton.innerText);
-        });
-      });
-
-      
-      function getResult(value) {
-        if (value === '=') {
-          result.value = eval(result.value);
-        } else {
-            result.value += value;
-        }
-      }
-
-      function clearResult(value) {
-        result.value = '';
-        result.placeholder = 'Asme-calculator';
-
-      }
-
-      function getPercent(value) {
-        if (result.value === '') {
-          checkValidation();
-        } else {
-          result.value = result.value / 100 ;
-        }
-      }
-
-      function checkValidation() {
-        if(result.value === '') {
-          result.placeholder = 'invalid input';
-        } else {
-          result.value += specialChar;
-        }
-      }
-
-      console.log(result.placeholder);
-
-    </script>
+    <script languge="javascript" src="cal.js"></script>
     
   </body>
 </html>

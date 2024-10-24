@@ -1,0 +1,54 @@
+body {
+  font-size: 14px;
+}
+
+.all-container {
+  padding: 40px 0;
+  border-radius: 5px;
+  width: 300px;
+  /* background-color: gray; */
+  text-align: center;
+  margin: 0 auto;
+}
+
+.input-place {
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 10px;
+  height: 80px;
+  width: 232px;
+  margin-left: px;
+  margin-bottom: 7px;
+  text-align: right;
+}
+
+.btn-container {
+  margin: 0 auto;
+ 
+}
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+
+  transition: opacity 0.15s;
+}
+
+.btn:hover {
+  opacity: 0.5;
+}
+
+.big-btn {
+  width: 112px;
+}
+
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}
