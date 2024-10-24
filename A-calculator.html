@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+
+      body {
+        font-size: 14px;
+      }
+
+      .all-container {
+        padding: 40px 0;
+        border-radius: 5px;
+        width: 300px;
+        /* background-color: gray; */
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      .input-place {
+        font-weight: bold;
+        font-size: 14px;
+        border-radius: 10px;
+        height: 80px;
+        width: 232px;
+        margin-left: px;
+        margin-bottom: 7px;
+        text-align: right;
+      }
+
+      .btn-container {
+        margin: 0 auto;
+       
+      }
+
+      .btn {
+        border: none;
+        border-radius: 5px;
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+
+        transition: opacity 0.15s;
+      }
+
+      .btn:hover {
+        opacity: 0.5;
+      }
+
+      .big-btn {
+        width: 112px;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .orange {
+        background-color: orange;
+      }
+
+    </style>
+
+  </head>
+  <body>
+
+    <div class="all-container">
+
+      <input  class="input-place" type="text" placeholder="Asme-calculator">
+    
+      <div class="btn-container">
+        <div class="upper-btn">
+          <button class="btn red cancle-btn big-btn">c</button>
+          <button class="btn orange">%</button>
+          <button class="btn orange">/</button>
+        </div>
+        
+        <div class="middle-btn">
+          <button class="btn">7</button>
+          <button class="btn">8</button>
+          <button class="btn">9</button>
+          <button class="btn orange">*</button>
+          <button class="btn">4</button>
+          <button class="btn">5</button>
+          <button class="btn">6</button>
+          <button class="btn orange">-</button>
+          <button class="btn">1</button>
+          <button class="btn">2</button>
+          <button class="btn">3</button>
+          <button class="btn orange">+</button>
+        </div>
+        
+        <div class="lower-btn">
+          <button class="btn big-btn">0</button>
+          <button class="btn">.</button>
+          <button class="btn orange">=</button>
+        </div>
+        
+      </div>
+    </div>
+    
+
+    <script>
+
+      const result = document.querySelector('.input-place');
+      
+      
+      let specialChar; 
+
+      const specials = document.querySelectorAll('.orange');
+      specials.forEach((character, index) => {
+        character.addEventListener('click', () => {
+          specialChar = character.innerText;
+          //console.log(specialChar);
+        });
+      });
+
+
+
+
+
+      const btn = document.querySelectorAll('.btn');
+      btn.forEach((singleButton, index) => {
+        singleButton.addEventListener('click', () => {
+          if (singleButton.innerText === 'c') {
+            clearResult(singleButton.innerText);
+          } else if (singleButton.innerText === '=') {
+            getResult(singleButton.innerText);
+          } else if (singleButton.innerText === '%') {
+            getPercent(singleButton.innerText);
+            //getResult(singleButton.innerText);
+          } else if (singleButton.innerText === specialChar) {
+            checkValidation();
+          }  else {
+            getResult(singleButton.innerText);
+          }
+          console.log(singleButton.innerText);
+        });
+      });
+
+      
+      function getResult(value) {
+        if (value === '=') {
+          result.value = eval(result.value);
+        } else {
+            result.value += value;
+        }
+      }
+
+      function clearResult(value) {
+        result.value = '';
+        result.placeholder = 'Asme-calculator';
+
+      }
+
+      function getPercent(value) {
+        if (result.value === '') {
+          checkValidation();
+        } else {
+          result.value = result.value / 100 ;
+        }
+      }
+
+      function checkValidation() {
+        if(result.value === '') {
+          result.placeholder = 'invalid input';
+        } else {
+          result.value += specialChar;
+        }
+      }
+
+      console.log(result.placeholder);
+
+    </script>
+    
+  </body>
+</html>
